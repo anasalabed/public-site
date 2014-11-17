@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html class="bg-black" xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+    xmlns:pf="http://primefaces.org/ui"
+     xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+    
+        <meta charset="UTF-8" />
+        <title>Reg My Hashtag | Registration Page</title>
+     	<ui:include page="include/header-resources-include.jsp" />
+    </h:head>
+    <body class="bg-black">
+
+        <div class="form-box" id="login-box">
+            <div class="header">Register New Hashtag</div>
+				<h:form>
+				<pf:growl id="msgs"/>
+	                <div class="body bg-gray">
+	                	<div class="form-group">
+							<h:inputText value="#{hashtagController.hashtag.hashtag}" p:placeholder="#hashtag" styleClass="form-control" required="true" requiredMessage="Hashtag can't be empty"/>
+	                    </div>
+	                    <div class="form-group">
+	                    	<h:inputText value="#{hashtagController.hashtag.ownerFirstName}" p:placeholder="First Name" styleClass="form-control" required="true" requiredMessage="First Name can't be empty"/>
+	                    </div>
+	                    <div class="form-group">
+	                        <h:inputText value="#{hashtagController.hashtag.ownerLastName}" p:placeholder="Last Name" styleClass="form-control" required="true" requiredMessage="Last Name can't be empty"/>
+	                    </div>
+	                    <div class="form-group">
+	                    	<h:inputSecret value="#{hashtagController.hashtag.password}" p:placeholder="Password" styleClass="form-control" required="true" requiredMessage="Password can't be empty"/>
+	                    </div>
+	                    <div class="form-group">
+	                        <h:inputSecret value="#{hashtagController.password}" p:placeholder="Password" styleClass="form-control" required="true" requiredMessage="Confirm Password can't be empty"/>
+	                    </div>
+	                </div>
+	                <div class="footer">                    
+						<h:commandButton actionListener="#{hashtagController.submit}"  value="Sign me up" styleClass="btn bg-olive btn-block"></h:commandButton>
+	
+	                    <a href="login.html" class="text-center">I already have a membership</a>
+	                </div>
+				</h:form>
+<!--             <div class="margin text-center"> -->
+<!--                 <span>Register using social networks</span> -->
+<!--                 <br/> -->
+<!--                 <button class="btn bg-light-blue btn-circle"><i class="fa fa-facebook"></i></button> -->
+<!--                 <button class="btn bg-aqua btn-circle"><i class="fa fa-twitter"></i></button> -->
+<!--                 <button class="btn bg-red btn-circle"><i class="fa fa-google-plus"></i></button> -->
+
+<!--             </div> -->
+        </div>
+
+        <ui:include page="include/footer-resources-include.jsp" />
+
+    </body>
+</html>
