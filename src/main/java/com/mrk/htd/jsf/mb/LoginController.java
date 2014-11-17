@@ -16,7 +16,7 @@ import com.mrk.htd.sdk.rest.exceptions.RestException;
  */
 @javax.faces.bean.ManagedBean
 @ViewScoped
-public class HashtagController extends AbstractMB<Hashtag>{
+public class LoginController extends AbstractMB<Hashtag>{
 
 	private String password;
 	

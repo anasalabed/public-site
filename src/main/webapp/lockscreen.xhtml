@@ -1,13 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=US-ASCII"
-    pageEncoding="US-ASCII"%>
-<!DOCTYPE html>
-<html class="lockscreen">
-    <head>
-        <meta charset="UTF-8">
-        <title>Reg My Hashtag | Lockscreen</title>
-        <jsp:include page="include/header-resources-include.jsp"></jsp:include>
-
-    </head>
+<html class="lockscreen" xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+    xmlns:pf="http://primefaces.org/ui"
+     xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+    
+        <meta charset="UTF-8" />
+        <title>Reg My Hashtag | Lockscreene</title>
+     	<ui:include page="include/header-resources-include.jsp" />
+    </h:head>
     <body>
         <!-- Automatic element centering using js -->
         <div class="center">            
@@ -65,7 +66,6 @@
                 var m = today.getMinutes();
                 var s = today.getSeconds();
 
-                // add a zero in front of numbers<10
                 m = checkTime(m);
                 s = checkTime(s);
 
