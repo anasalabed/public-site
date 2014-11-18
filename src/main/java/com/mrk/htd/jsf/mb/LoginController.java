@@ -1,17 +1,13 @@
 package com.mrk.htd.jsf.mb;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 
+import com.mrk.htd.jsf.security.AuthenticationService;
 import com.mrk.htd.jsf.util.JsfUtil;
 import com.mrk.htd.sdk.beans.Hashtag;
 import com.mrk.htd.sdk.rest.AbstractRestClient;
 import com.mrk.htd.sdk.rest.HashtagClient;
-import com.mrk.htd.sdk.rest.exceptions.NoResultFoundException;
-import com.mrk.htd.sdk.rest.exceptions.RestException;
 
 /**
  * 
@@ -31,19 +27,21 @@ public class LoginController extends AbstractMB<Hashtag>{
 		return new HashtagClient();
 	}
 	
+	@ManagedProperty(value = "#{authenticationService}")
+	private AuthenticationService authenticationService;
+	
+	public void setAuthenticationService(AuthenticationService authenticationService) {
+		this.authenticationService = authenticationService;
+	}
+	
 	public void submit(){
 		if(hashtag != null && password != null){
-			try {
-				Map<String, String> filters = new HashMap<String, String>();
-				filters.put("hashtag", hashtag);
-				filters.put("password", password);
-				Hashtag hashtag = getResetClient().findSingle(filters);
-				JsfUtil.showSucess("Addedd successfully" +hashtag);
-			} catch (NoResultFoundException e) {
-				JsfUtil.showError("Wrong Credentials");
-			} catch (RestException e) {
-				JsfUtil.showError(e.getMessage());
-			}
+				boolean success = authenticationService.login(this.hashtag, password);
+				if(success){
+					JsfUtil.showSucess("Addedd successfully" +hashtag);
+				}else{
+					JsfUtil.showError("Wrong Credentials");
+				}
 		}else{
 			JsfUtil.showError("Username/Passwrod are required");
 		}

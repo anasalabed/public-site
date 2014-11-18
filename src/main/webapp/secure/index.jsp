@@ -4,12 +4,12 @@
     <head>
         <meta charset="UTF-8">
         <title>AdminLTE | Dashboard</title>
-        <jsp:include page="include/header-resources-include.jsp"></jsp:include>
+        <jsp:include page="secure/include/header-resources-include.jsp"></jsp:include>
     </head>
     <body class="skin-blue">
-    	<jsp:include page="include/header.jsp"></jsp:include>
+    	<jsp:include page="secure/include/header.jsp"></jsp:include>
         <div class="wrapper row-offcanvas row-offcanvas-left">
-            <jsp:include page="include/left.jsp"></jsp:include>
+            <jsp:include page="secure/include/left.jsp"></jsp:include>
 
             <!-- Right side column. Contains the navbar and content of the page -->
             <aside class="right-side">                
