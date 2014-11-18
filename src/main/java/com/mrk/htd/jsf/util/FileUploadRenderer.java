@@ -18,6 +18,12 @@ import org.primefaces.renderkit.CoreRenderer;
 import org.primefaces.util.HTML;
 import org.primefaces.util.WidgetBuilder;
 
+/**
+ * 
+ * @author mkiswani
+ * @site http://www.mkiswani.com
+ * @email rhkiswani@gmail.com
+ */
 public class FileUploadRenderer extends CoreRenderer {
 
     @Override

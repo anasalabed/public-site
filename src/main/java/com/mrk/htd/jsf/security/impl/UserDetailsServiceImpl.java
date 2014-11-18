@@ -17,8 +17,11 @@ import com.mrk.htd.sdk.rest.HashtagClient;
 import com.mrk.htd.sdk.rest.exceptions.NoResultFoundException;
 import com.mrk.htd.sdk.rest.exceptions.RestException;
 
-/*
- * Spring-security requires an implementation of UserDetailService. 
+/**
+ * 
+ * @author mkiswani
+ * @site http://www.mkiswani.com
+ * @email rhkiswani@gmail.com
  */
 @Service("userDetailsService")
 public class UserDetailsServiceImpl implements UserDetailsService {

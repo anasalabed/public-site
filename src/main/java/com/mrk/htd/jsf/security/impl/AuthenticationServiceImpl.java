@@ -11,6 +11,12 @@ import org.springframework.stereotype.Service;
 
 import com.mrk.htd.jsf.security.AuthenticationService;
 
+/**
+ * 
+ * @author mkiswani
+ * @site http://www.mkiswani.com
+ * @email rhkiswani@gmail.com
+ */
 @Service("authenticationService")
 public class AuthenticationServiceImpl implements AuthenticationService {
 

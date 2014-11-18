@@ -9,7 +9,8 @@ import javax.servlet.ServletContext;
 /**
  * 
  * @author mkiswani
- * 
+ * @site http://www.mkiswani.com
+ * @email rhkiswani@gmail.com
  */
 public class JsfUtil {
 
