@@ -34,6 +34,11 @@ public class HashtagController extends AbstractMB<Hashtag>{
 	public void submit(){
 		if(getSelected() != null && getSelected().getPassword().equals(password)){
 			try {
+				checkIsAvailable();
+				if(!isAvailable){
+					JsfUtil.showError("Hashtag is already exist");
+					return;
+				}
 				create(getSelected());
 				JsfUtil.showSucess("Addedd successfully");
 			} catch (RestException e) {
