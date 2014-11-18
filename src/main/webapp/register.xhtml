@@ -8,7 +8,7 @@
     
         <meta charset="UTF-8" />
         <title>Reg My Hashtag | Registration Page</title>
-     	<ui:include page="secure/include/header-resources-include.jsp" />
+     	<ui:include page="include/header-resources-include.jsp" />
     </h:head>
     <body class="bg-black">
 
@@ -39,9 +39,9 @@
 	                    </div>
 	                </div>
 	                <div class="footer">                    
-						<h:commandButton actionListener="#{hashtagController.submit}"  value="Sign me up" styleClass="btn bg-olive btn-block"></h:commandButton>
+						<h:commandButton action="#{hashtagController.submit}"  value="Sign me up" styleClass="btn bg-olive btn-block"></h:commandButton>
 	
-	                    <a href="login.html" class="text-center">I already have a membership</a>
+	                    <a href="login.xhtml" class="text-center">I already have a membership</a>
 	                </div>
 				</h:form>
 <!--             <div class="margin text-center"> -->
@@ -54,7 +54,7 @@
 <!--             </div> -->
         </div>
 
-        <ui:include page="secure/include/footer-resources-include.jsp" />
+        <ui:include page="include/footer-resources-include.jsp" />
 
     </body>
 </html>

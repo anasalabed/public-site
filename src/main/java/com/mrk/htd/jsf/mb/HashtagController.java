@@ -29,18 +29,19 @@ public class HashtagController extends AbstractMB<Hashtag>{
 	}
 	
 	/**
+	 * @return 
 	 * 
 	 */
-	public void submit(){
+	public String submit(){
 		if(getSelected() != null && getSelected().getPassword().equals(password)){
 			try {
 				checkIsAvailable();
 				if(!isAvailable){
 					JsfUtil.showError("Hashtag is already exist");
-					return;
+					return null;
 				}
 				create(getSelected());
-				JsfUtil.showSucess("Addedd successfully");
+				return "login.xhtml?faces-redirect=true";
 			} catch (RestException e) {
 				if(e.getMessage().contains("Duplicate entry")){
 					JsfUtil.showError("Hashtag is already exist");
@@ -51,6 +52,7 @@ public class HashtagController extends AbstractMB<Hashtag>{
 		}else{
 			JsfUtil.showError("Passwords should be identical");
 		}
+		return null;
 	}
 
 	/**

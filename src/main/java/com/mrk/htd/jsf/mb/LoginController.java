@@ -34,17 +34,29 @@ public class LoginController extends AbstractMB<Hashtag>{
 		this.authenticationService = authenticationService;
 	}
 	
-	public void submit(){
+	public String submit(){
 		if(hashtag != null && password != null){
+			try{
+				
 				boolean success = authenticationService.login(this.hashtag, password);
 				if(success){
-					JsfUtil.showSucess("Addedd successfully" +hashtag);
+					return "/secure/index.xhtml?faces-redirect=true";
 				}else{
 					JsfUtil.showError("Wrong Credentials");
+					return null;
 				}
+			}catch(Exception e ){
+				JsfUtil.showError(e.getMessage());
+			}
 		}else{
 			JsfUtil.showError("Username/Passwrod are required");
 		}
+		return null;
+	}
+	
+	public String logout(){
+		authenticationService.logout();
+		return "/login.xhtml?faces-redirect=true";
 	}
 
 	public String getPassword() {

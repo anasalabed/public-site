@@ -1,8 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=US-ASCII"
-    pageEncoding="US-ASCII"%>
- <!-- header logo: style can be found in header.less -->
+<!DOCTYPE html>
+<html class="bg-black" xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://java.sun.com/jsf/passthrough"
+     xmlns:ui="http://java.sun.com/jsf/facelets">
         <header class="header">
-            <a href="index.html" class="logo">
+            <a href="index.xhtml" class="logo">
                 <!-- Add the class icon to your logo image or logo icon to add the margining -->
                 Reg My Hashtag
             </a>
@@ -247,3 +249,4 @@
                 </div>
             </nav>
         </header>
+</html>

@@ -1,13 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=US-ASCII"
-    pageEncoding="US-ASCII"%>
-<!-- Left side column. contains the logo and sidebar -->
+<!DOCTYPE html>
+<html class="bg-black" xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://java.sun.com/jsf/passthrough"
+     xmlns:ui="http://java.sun.com/jsf/facelets">
             <aside class="left-side sidebar-offcanvas">                
                 <!-- sidebar: style can be found in sidebar.less -->
                 <section class="sidebar">
                     <!-- Sidebar user panel -->
                     <div class="user-panel">
                         <div class="pull-left image">
-                            <img src="img/avatar3.png" class="img-circle" alt="User Image" />
+                            <img src="../img/avatar3.png" class="img-circle" alt="User Image" />
                         </div>
                         <div class="pull-left info">
                             <p>Hello, Jane</p>
@@ -115,3 +117,4 @@
                 </section>
                 <!-- /.sidebar -->
             </aside>
+</html>

@@ -1,15 +1,18 @@
-<%@ page language="java" contentType="text/html; charset=US-ASCII"
-    pageEncoding="US-ASCII"%>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>AdminLTE | Dashboard</title>
-        <jsp:include page="secure/include/header-resources-include.jsp"></jsp:include>
-    </head>
+<html  xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+    xmlns:pf="http://primefaces.org/ui"
+     xmlns:ui="http://java.sun.com/jsf/facelets">
+     <h:head>
+    
+        <meta charset="UTF-8" />
+        <title>Reg My Hashtag | Dashboard</title>
+     	<ui:include page="../include/header-resources-include.jsp" />
+    </h:head>
     <body class="skin-blue">
-    	<jsp:include page="secure/include/header.jsp"></jsp:include>
+    	<ui:include page="../include/header.jsp" />
         <div class="wrapper row-offcanvas row-offcanvas-left">
-            <jsp:include page="secure/include/left.jsp"></jsp:include>
+        <ui:include page="../include/left.jsp" />
 
             <!-- Right side column. Contains the navbar and content of the page -->
             <aside class="right-side">                
@@ -32,8 +35,7 @@
                 </section><!-- /.content -->
             </aside><!-- /.right-side -->
         </div><!-- ./wrapper -->
-
-		<jsp:include page="include/footer-resources-include.jsp"></jsp:include>
+		<ui:include page="../include/footer-resources-include.jsp" />
 	
     </body>
 </html>

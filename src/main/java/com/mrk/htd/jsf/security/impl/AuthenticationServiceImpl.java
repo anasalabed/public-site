@@ -18,14 +18,11 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 	private AuthenticationManager authenticationManager; 
 
 	@Override
-	public boolean login(String username, String password) {
-		try {
-			Authentication authenticate = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
-			if (authenticate.isAuthenticated()) {
-				SecurityContextHolder.getContext().setAuthentication(authenticate);
-				return true;
-			}
-		} catch (AuthenticationException e) {
+	public boolean login(String username, String password) throws AuthenticationException{
+		Authentication authenticate = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
+		if (authenticate.isAuthenticated()) {
+			SecurityContextHolder.getContext().setAuthentication(authenticate);
+			return true;
 		}
 		return false;
 	}
@@ -33,7 +30,6 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 	@Override
 	public void logout() {
 		SecurityContextHolder.getContext().setAuthentication(null);
-		// currentUser.unauthenticate();
 	}
 
 }
