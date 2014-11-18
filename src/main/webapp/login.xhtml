@@ -13,27 +13,27 @@
 
         <div class="form-box" id="login-box">
             <div class="header">Sign In</div>
-            <form action="../../index.html" method="post">
+            <h:form>
+				<pf:growl id="msgs"/>
                 <div class="body bg-gray">
                     <div class="form-group">
-                        <input type="text" name="userid" class="form-control" placeholder="User ID"/>
+                       <h:inputText value="#{loginController.hashtag}" p:placeholder="#hashtag" styleClass="form-control" required="true" requiredMessage="Hashtag can't be empty"/>
                     </div>
                     <div class="form-group">
-                        <input type="password" name="password" class="form-control" placeholder="Password"/>
+                        <h:inputSecret value="#{loginController.password}" p:placeholder="Password" styleClass="form-control" required="true" requiredMessage="Password can't be empty"/>
                     </div>          
                     <div class="form-group">
                         <input type="checkbox" name="remember_me"/> Remember me
                     </div>
                 </div>
                 <div class="footer">                                                               
-                    <button type="submit" class="btn bg-olive btn-block">Sign me in</button>  
+                    <h:commandButton actionListener="#{loginController.submit}"  value="Sign me up" styleClass="btn bg-olive btn-block"></h:commandButton>
                     
                     <p><a href="#">I forgot my password</a></p>
                     
                     <a href="register.html" class="text-center">Register a new membership</a>
                 </div>
-            </form>
-
+			</h:form>
             <div class="margin text-center">
                 <span>Sign in using social networks</span>
                 <br/>

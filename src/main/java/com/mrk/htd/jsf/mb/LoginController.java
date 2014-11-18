@@ -1,11 +1,16 @@
 package com.mrk.htd.jsf.mb;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.faces.bean.ViewScoped;
 
 import com.mrk.htd.jsf.util.JsfUtil;
 import com.mrk.htd.sdk.beans.Hashtag;
 import com.mrk.htd.sdk.rest.AbstractRestClient;
 import com.mrk.htd.sdk.rest.HashtagClient;
+import com.mrk.htd.sdk.rest.exceptions.NoResultFoundException;
 import com.mrk.htd.sdk.rest.exceptions.RestException;
 
 /**
@@ -18,6 +23,7 @@ import com.mrk.htd.sdk.rest.exceptions.RestException;
 @ViewScoped
 public class LoginController extends AbstractMB<Hashtag>{
 
+	private String hashtag;
 	private String password;
 	
 	@Override
@@ -26,15 +32,20 @@ public class LoginController extends AbstractMB<Hashtag>{
 	}
 	
 	public void submit(){
-		if(getSelected() != null && getSelected().getPassword().equals(password)){
+		if(hashtag != null && password != null){
 			try {
-				create(getSelected());
-				JsfUtil.showSucess("Addedd successfully");
+				Map<String, String> filters = new HashMap<String, String>();
+				filters.put("hashtag", hashtag);
+				filters.put("password", password);
+				Hashtag hashtag = getResetClient().findSingle(filters);
+				JsfUtil.showSucess("Addedd successfully" +hashtag);
+			} catch (NoResultFoundException e) {
+				JsfUtil.showError("Wrong Credentials");
 			} catch (RestException e) {
 				JsfUtil.showError(e.getMessage());
 			}
 		}else{
-			JsfUtil.showError("Passwords should be identical");
+			JsfUtil.showError("Username/Passwrod are required");
 		}
 	}
 
@@ -46,9 +57,13 @@ public class LoginController extends AbstractMB<Hashtag>{
 		this.password = password;
 	}
 
-	@Override
-	public Hashtag getSelected() {
-		return super.getSelected();
+	public String getHashtag() {
+		return hashtag;
 	}
+
+	public void setHashtag(String hashtag) {
+		this.hashtag = hashtag;
+	}
+
 	
 }

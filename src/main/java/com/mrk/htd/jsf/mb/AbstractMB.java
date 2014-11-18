@@ -1,6 +1,8 @@
 package com.mrk.htd.jsf.mb;
 
 import java.lang.reflect.ParameterizedType;
+import java.util.List;
+import java.util.Map;
 
 import com.mrk.htd.sdk.rest.AbstractRestClient;
 import com.mrk.htd.sdk.rest.exceptions.RestException;
@@ -40,9 +42,23 @@ public abstract class AbstractMB<T> {
 		getResetClient().delete(id);
 	}
 
-	public void find(int id) throws RestException {
-		getResetClient().find(id);
+	public T find(int id) throws RestException {
+		return getResetClient().find(id);
 	}
+	
+	public T findSingleWithFilters(Map<String,String> filters) throws RestException {
+		return getResetClient().findSingle(filters);
+	}
+	
+	public List<T> findWithFilters(Map<String,String> filters) throws RestException {
+		return getResetClient().find(filters);
+	}
+	
+	public List<T> list(int page,int size) throws RestException {
+		return getResetClient().list(page,size);
+	}
+	
+	
 
 	public void update(T t) throws RestException {
 		selected = getResetClient().update(t);
