@@ -21,7 +21,9 @@
 							<pf:inputText value="#{hashtagController.selected.hashtag}" placeholder="#hashtag" styleClass="form-control" required="true" requiredMessage="Hashtag can't be empty">
 								 <pf:ajax event="keyup" listener="#{hashtagController.checkIsAvailable}" update="isAvailable" />
 							</pf:inputText>
-							<h:outputText id="isAvailable" value="Available"  rendered="#{hashtagController.isAvailable}"/>
+							<h:panelGroup id="isAvailable">
+								<h:outputText   styleClass="btn btn-danger" style="width: 100%;"  value="Not Available"  rendered="#{!hashtagController.isAvailable}"/>
+							</h:panelGroup>
 	                    </div>
 	                    <div class="form-group">
 	                    	<h:inputText value="#{hashtagController.selected.ownerFirstName}" p:placeholder="First Name" styleClass="form-control" required="true" requiredMessage="First Name can't be empty"/>

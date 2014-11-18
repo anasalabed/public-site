@@ -21,7 +21,7 @@ import com.mrk.htd.sdk.rest.exceptions.RestException;
 public class HashtagController extends AbstractMB<Hashtag>{
 
 	private String password;
-	private boolean isAvailable;
+	private boolean isAvailable = true;
 	
 	@Override
 	protected AbstractRestClient<Hashtag> getResetClient() {
@@ -57,10 +57,13 @@ public class HashtagController extends AbstractMB<Hashtag>{
 				Filters filters = new Filters().add("hashtag", getSelected().getHashtag());
 				findSingleWithFilters(filters);
 				isAvailable = false;
+				return;
 			}catch(NoResultFoundException e ){
 				isAvailable = true;
+				return;
 			} catch (RestException e) {
 				isAvailable = true;
+				return;
 			}
 		}
 		isAvailable = true;
