@@ -30,6 +30,10 @@ public class HashtagDetails implements UserDetails{
 		adminAuthorities.add(new GrantedAuthorityImpl("ROLE_ADMIN"));
 		return adminAuthorities;
 	}
+	
+	public Integer getHashtagId() {
+		return hashtag.getHashtagId();
+	}
 
 	@Override
 	public String getPassword() {

@@ -2,10 +2,10 @@ package com.mrk.htd.jsf.mb;
 
 import javax.faces.bean.ViewScoped;
 
-import com.mrk.htd.jsf.util.Filters;
 import com.mrk.htd.jsf.util.JsfUtil;
 import com.mrk.htd.sdk.beans.Hashtag;
 import com.mrk.htd.sdk.rest.AbstractRestClient;
+import com.mrk.htd.sdk.rest.Filters;
 import com.mrk.htd.sdk.rest.HashtagClient;
 import com.mrk.htd.sdk.rest.exceptions.NoResultFoundException;
 import com.mrk.htd.sdk.rest.exceptions.RestException;
