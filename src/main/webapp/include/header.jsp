@@ -2,7 +2,8 @@
 <html class="bg-black" xmlns="http://www.w3.org/1999/xhtml"
     xmlns:h="http://java.sun.com/jsf/html"
     xmlns:p="http://java.sun.com/jsf/passthrough"
-     xmlns:ui="http://java.sun.com/jsf/facelets">
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
         <header class="header">
             <a href="index.xhtml" class="logo">
                 Register My Hashtag
@@ -64,15 +65,19 @@
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="glyphicon glyphicon-user"></i>
-                                <span>Mohamed Kiswani <i class="caret"></i></span>
+                                <span>#{loginController.hashtagDetails.ownerFirstName} #{loginController.hashtagDetails.ownerLastName} <i class="caret"></i></span>
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- User image -->
                                 <li class="user-header bg-light-blue">
                                     <img src="#{request.contextPath}/img/avatar3.png" class="img-circle" alt="User Image" />
                                     <p>
-                                        Mohamed Kiswani - Web Developer
-                                        <small>Member since Nov. 2007</small>
+                                        #{loginController.hashtagDetails.ownerFirstName} #{loginController.hashtagDetails.ownerLastName}
+                                        <small>Member since 
+                                        	<h:outputText value="#{loginController.hashtagDetails.createdDate}">
+												  <f:convertDateTime type="date" pattern="MM-dd-yyyy"/>
+											</h:outputText>
+										</small>
                                     </p>
                                 </li>
                                 <!-- Menu Footer-->

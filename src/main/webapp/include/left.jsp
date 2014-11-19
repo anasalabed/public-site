@@ -12,7 +12,7 @@
                             <img src="../img/avatar3.png" class="img-circle" alt="User Image" />
                         </div>
                         <div class="pull-left info">
-                            <p>Hello, Jane</p>
+                            <p>Hello, #{loginController.hashtagDetails.ownerFirstName}</p>
 
                             <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                         </div>
@@ -26,14 +26,12 @@
                             </span>
                         </div>
                     </form>
-<!--                     /.search form -->
-<!--                     sidebar menu: : style can be found in sidebar.less -->
-<!--                     <ul class="sidebar-menu"> -->
-<!--                         <li class="active"> -->
-<!--                             <a href="index.html"> -->
-<!--                                 <i class="fa fa-dashboard"></i> <span>Dashboard</span> -->
-<!--                             </a> -->
-<!--                         </li> -->
+                    <ul class="sidebar-menu">
+                        <li class="active">
+                            <a href="index.html">
+                                <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                            </a>
+                        </li>
 <!--                         <li> -->
 <!--                             <a href="pages/widgets.html"> -->
 <!--                                 <i class="fa fa-th"></i> <span>Widgets</span> <small class="badge pull-right bg-green">new</small> -->
@@ -113,7 +111,7 @@
 <!--                                 <li><a href="pages/examples/blank.html"><i class="fa fa-angle-double-right"></i> Blank Page</a></li> -->
 <!--                             </ul> -->
 <!--                         </li> -->
-<!--                     </ul> -->
+                    </ul>
                 </section>
                 <!-- /.sidebar -->
             </aside>

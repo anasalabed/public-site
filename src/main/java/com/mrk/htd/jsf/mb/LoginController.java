@@ -3,7 +3,11 @@ package com.mrk.htd.jsf.mb;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
+
 import com.mrk.htd.jsf.security.AuthenticationService;
+import com.mrk.htd.jsf.security.impl.HashtagDetails;
 import com.mrk.htd.jsf.util.JsfUtil;
 import com.mrk.htd.sdk.beans.Hashtag;
 import com.mrk.htd.sdk.rest.AbstractRestClient;
@@ -13,48 +17,52 @@ import com.mrk.htd.sdk.rest.HashtagClient;
  * 
  * @author mkiswani
  * @site http://www.mkiswani.com
- * @email rhkiswani@gmail.com 
+ * @email rhkiswani@gmail.com
  */
 @javax.faces.bean.ManagedBean
 @ViewScoped
-public class LoginController extends AbstractMB<Hashtag>{
+public class LoginController extends AbstractMB<Hashtag> {
 
 	private String hashtag;
 	private String password;
-	
+
 	@Override
 	protected AbstractRestClient<Hashtag> getResetClient() {
 		return new HashtagClient();
 	}
-	
+
 	@ManagedProperty(value = "#{authenticationService}")
 	private AuthenticationService authenticationService;
-	
+
 	public void setAuthenticationService(AuthenticationService authenticationService) {
 		this.authenticationService = authenticationService;
 	}
-	
-	public String submit(){
-		if(hashtag != null && password != null){
-			try{
-				
+
+	public String submit() {
+		if (hashtag != null && password != null) {
+			try {
+
 				boolean success = authenticationService.login(this.hashtag, password);
-				if(success){
+				if (success) {
 					return "/secure/index.xhtml?faces-redirect=true";
-				}else{
+				} else {
 					JsfUtil.showError("Wrong Credentials");
 					return null;
 				}
-			}catch(Exception e ){
+			} catch (Exception e) {
 				JsfUtil.showError(e.getMessage());
 			}
-		}else{
+		} else {
 			JsfUtil.showError("Username/Passwrod are required");
 		}
 		return null;
 	}
-	
-	public String logout(){
+
+	public HashtagDetails getHashtagDetails() {
+		return (HashtagDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	}
+
+	public String logout() {
 		authenticationService.logout();
 		return "/login.xhtml?faces-redirect=true";
 	}
@@ -75,5 +83,4 @@ public class LoginController extends AbstractMB<Hashtag>{
 		this.hashtag = hashtag;
 	}
 
-	
 }
