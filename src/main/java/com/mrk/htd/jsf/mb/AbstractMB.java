@@ -4,7 +4,13 @@ import java.lang.reflect.ParameterizedType;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.security.core.context.SecurityContextHolder;
+
+import com.mrk.htd.jsf.security.impl.HashtagDetails;
+import com.mrk.htd.sdk.beans.HashtagProfile;
 import com.mrk.htd.sdk.rest.AbstractRestClient;
+import com.mrk.htd.sdk.rest.Filters;
+import com.mrk.htd.sdk.rest.HashtagProfileClient;
 import com.mrk.htd.sdk.rest.exceptions.RestException;
 
 /**
@@ -32,6 +38,10 @@ public abstract class AbstractMB<T> {
 		} catch (Exception e) {
 			throw new IllegalArgumentException("Failed to create instance from " + tClass.getName() + " Due to :" + e.getMessage());
 		}
+	}
+	
+	public void select(T t){
+		selected = t;
 	}
 
 	public void create(T t) throws RestException {
@@ -72,5 +82,18 @@ public abstract class AbstractMB<T> {
 		this.selected = selected;
 	}
 
+	public HashtagDetails getHashtagDetails() {
+		return (HashtagDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	}
+
+	public HashtagProfile getHashtagProfile() {
+		HashtagDetails hashtagDetails = getHashtagDetails();
+		try {
+			return new HashtagProfileClient().findSingle(new Filters().add("hashtagId", hashtagDetails.getHashtagId().toString()));
+		} catch (RestException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 	
 }

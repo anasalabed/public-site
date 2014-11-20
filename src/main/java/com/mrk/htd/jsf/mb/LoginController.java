@@ -62,20 +62,6 @@ public class LoginController extends AbstractMB<Hashtag> {
 		return null;
 	}
 
-	public HashtagDetails getHashtagDetails() {
-		return (HashtagDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-	}
-	
-	public HashtagProfile getHashtagProfile() {
-		HashtagDetails hashtagDetails = getHashtagDetails();
-		try {
-			return new HashtagProfileClient().findSingle(new Filters().add("hashtagId", hashtagDetails.getHashtagId().toString()));
-		} catch (RestException e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
-
 	public String logout() {
 		authenticationService.logout();
 		return "/login.xhtml?faces-redirect=true";

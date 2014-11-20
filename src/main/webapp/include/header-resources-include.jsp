@@ -31,5 +31,14 @@
         	.ui-growl-title{
         		color: white;
         	}
+        	.ui-datatable tbody td{
+        		text-align: center;
+        	}
+        	.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default{
+        		background: none;
+        	}
+        	.ui-widget-header{
+        		background: none;
+        	}
         </style>
 </html>
