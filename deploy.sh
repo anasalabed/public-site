@@ -10,11 +10,10 @@ sudo mvn install
 echo "---------------------------------------------------------------------------------------------------------------------"
 echo "Copying to TOMCAT "
 echo "---------------------------------------------------------------------------------------------------------------------"
-sudo cp ./target/*.war /var/lib/tomcat7/webapps/ROOT.war
-sudo rm -r /var/lib/tomcat7/webapps/ROOT
+sudo cp ./target/*.war /opt/tomcat/webapps/ROOT.war
+sudo rm -r /opt/tomcat/webapps/ROOT
 echo "---------------------------------------------------------------------------------------------------------------------"
 echo "Restarting TOMCAT"
 echo "---------------------------------------------------------------------------------------------------------------------"
-sudo killall java
-sudo service tomcat7 start
-sudo tail -f /var/log/tomcat7/catalina.out 
+sudo service tomcat8 restart
+sudo tail -f /opt/tomcat/logs/catalina.out 
