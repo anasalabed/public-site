@@ -44,6 +44,11 @@ public class ContactsController extends AbstractMB<HashtagContacts> {
 		return new HashtagContactClient();
 	}
 
+	@Override
+	public void delete(int id) throws RestException {
+		super.delete(id);
+		loadContacts();
+	}
 	public String loadContacts() {
 		try {
 			hashtagContacts = findWithFilters(new Filters().add("hashtagId", getHashtagDetails().getHashtagId().toString()));

@@ -30,6 +30,14 @@
 
 			<!-- Main content -->
 			<section class="content">
+				<h:form id="form">
+				<p:ajaxStatus onstart="PF('statusDialog').show();" onsuccess="setTimeout(function(){PF('statusDialog').hide()}, 200);" /> 
+				<p:dialog
+					widgetVar="statusDialog" modal="true" draggable="false"
+					closable="false" resizable="false" showHeader="false">
+					<p:graphicImage value="/img/ajax-loader.gif" width="20px" height="20px" />
+					
+				</p:dialog> 
 				<div class="box">
 					<p:dataTable id="ContactsTable" var="contact" value="#{contactsController.hashtagContacts}"
                                  paginator="true" paginatorPosition="bottom" rows="10">
@@ -69,23 +77,15 @@
                         </p:column>
                          <p:column width="100">
                             <p:panelGrid columns="2" styleClass="noBorder">
-                            	 <p:commandButton  value="Delete" oncomplete="PF('delDialog').show()"   styleClass="btn btn-danger">
-                            	 	<f:setPropertyActionListener value="#{contact}" target="#{contactsController.selected}" />
-                            	 </p:commandButton>
-                            	 <h:commandButton action="#{loginController.submit}" value="Privacy"  styleClass="btn btn-info"></h:commandButton>
+                            	<p:commandButton value="Delete" ajax="true" actionListener="#{contactsController.delete(contact.contactId)}" style="background-color:#f56954;padding:0;color:white"  styleClass="btn btn-danger" update=":form:ContactsTable"/>
+                            	<h:commandButton action="#{loginController.submit}" value="Privacy"  styleClass="btn btn-info"></h:commandButton>
                             </p:panelGrid>
-                            <p:dialog header="Delete Confirmation" widgetVar="delDialog" resizable="false" id="delDialog"
-	                            showEffect="fade" hideEffect="explode" modal="true" width="300px">
-			                    <h:panelGrid id="display" columns="2" cellpadding="4" style="margin:0 auto;">
-			
-			                        <h:outputText value="Name: #{contactsController.selected != null?contactsController.selected:'N/A'}" />
-			                    </h:panelGrid>
-
-   				            </p:dialog> 
                         </p:column>
-
+                         
                     </p:dataTable>
+                  
 				</div>
+				</h:form>
 			</section>
 			<!-- /.content -->
 		</aside>

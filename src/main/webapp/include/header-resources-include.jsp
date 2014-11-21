@@ -51,4 +51,11 @@
         		 background-color: #0073b7 !important;
         	}
         </style>
+        <p:ajaxStatus onstart="PF('statusDialog').show();" onsuccess="setTimeout(function(){PF('statusDialog').hide()}, 200);" /> 
+		<p:dialog
+			widgetVar="statusDialog" modal="true" draggable="false"
+			closable="false" resizable="false" showHeader="false">
+			<p:graphicImage name="#{request.contextPath}/img/ajax-loader.gif" width="220px" height="20px" />
+			
+		</p:dialog> 
 </html>
