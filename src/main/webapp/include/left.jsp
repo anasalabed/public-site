@@ -2,7 +2,8 @@
 <html class="bg-black" xmlns="http://www.w3.org/1999/xhtml"
     xmlns:h="http://java.sun.com/jsf/html"
     xmlns:p="http://java.sun.com/jsf/passthrough"
-     xmlns:ui="http://java.sun.com/jsf/facelets">
+    xmlns:pf="http://primefaces.org/ui"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
             <aside class="left-side sidebar-offcanvas">                
                 <!-- sidebar: style can be found in sidebar.less -->
                 <section class="sidebar">
@@ -11,32 +12,25 @@
                         <div class="pull-left image">
                             <img src="#{loginController.hashtagProfile.profilePicture != null?loginController.hashtagProfile.profilePicture:loginController.unavailableUrl}" class="img-circle" alt="User Image" />
                         </div>
+                       
                         <div class="pull-left info">
                             <p>Hello, #{loginController.hashtagDetails.ownerFirstName}</p>
 
                             <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                         </div>
                     </div>
-                    <!-- search form -->
-                    <form action="#" method="get" class="sidebar-form">
-                        <div class="input-group">
-                            <input type="text" name="q" class="form-control" placeholder="Search..."/>
-                            <span class="input-group-btn">
-                                <button type='submit' name='seach' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
-                            </span>
-                        </div>
-                    </form>
+                   
                     <ul class="sidebar-menu">
                         <li class="active">
-                            <a href="index.html">
-                                <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                            <a href="../secure/index.xhtml">
+                                <i class="ion-ios7-keypad"></i> <span>Dashboard</span>
                             </a>
                         </li>
-<!--                         <li> -->
-<!--                             <a href="pages/widgets.html"> -->
-<!--                                 <i class="fa fa-th"></i> <span>Widgets</span> <small class="badge pull-right bg-green">new</small> -->
-<!--                             </a> -->
-<!--                         </li> -->
+                        <li>
+                           <a href="../secure/serach.xhtml">
+                                <i class="ion-ios7-search-strong"></i> <span>Find Hashtag</span>
+                            </a>
+                        </li>
 <!--                         <li class="treeview"> -->
 <!--                             <a href="#"> -->
 <!--                                 <i class="fa fa-bar-chart-o"></i> -->

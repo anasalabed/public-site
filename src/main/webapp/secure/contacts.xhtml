@@ -7,7 +7,7 @@
 <h:head>
 
 	<meta charset="UTF-8" />
-	<title>Reg My Hashtag | Dashboard</title>
+	<title>My Hashtag | Contacts</title>
 	<ui:include page="../include/header-resources-include.jsp" />
 </h:head>
 <body class="skin-blue">
@@ -20,17 +20,17 @@
 			<!-- Content Header (Page header) -->
 			<section class="content-header">
 				<h1>
-					Dashboard <small>Control panel</small>
+					Contacts <small>Contacts panel</small>
 				</h1>
 				<ol class="breadcrumb">
 					<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-					<li class="active">Blank page</li>
+					<li class="active">Contacts</li>
 				</ol>
 			</section>
 
 			<!-- Main content -->
 			<section class="content">
-				<h:form id="form">
+				<h:form >
 				<p:ajaxStatus onstart="PF('statusDialog').show();" onsuccess="setTimeout(function(){PF('statusDialog').hide()}, 200);" /> 
 				<p:dialog
 					widgetVar="statusDialog" modal="true" draggable="false"
@@ -78,7 +78,7 @@
                         </p:column>
                          <p:column width="100">
                             <p:panelGrid columns="2" styleClass="noBorder">
-                            	<p:commandButton value="Delete" ajax="true" actionListener="#{contactsController.delete(contact.contactId)}" style="background-color:#f56954;padding:0;color:white"  styleClass="btn btn-danger" update=":form:ContactsTable"/>
+                            	<p:commandButton value="Delete" ajax="true" actionListener="#{contactsController.delete(contact.contactId)}" style="background-color:#f56954;padding:0;color:white"  styleClass="btn btn-danger" update="@all"/>
                             	<h:commandButton action="#{loginController.submit}" value="Privacy"  styleClass="btn btn-info"></h:commandButton>
                             </p:panelGrid>
                         </p:column>

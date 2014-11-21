@@ -103,6 +103,11 @@ public class HashtagDetails implements UserDetails{
 	public HashtagProfile getHashtagProfile() {
 		return profile;
 	}
+	
+	public Hashtag getHashtagOriginalObject(){
+		return hashtag;
+	}
 
+	
 
 }

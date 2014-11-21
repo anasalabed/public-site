@@ -18,7 +18,7 @@
 				<pf:growl id="msgs"/>
 	                <div class="body bg-gray">
 	                	<div class="form-group">
-							<pf:inputText value="#{hashtagController.selected.hashtag}" placeholder="#hashtag" styleClass="form-control" required="true" requiredMessage="Hashtag can't be empty">
+							<pf:inputText value="#{hashtagController.selected.hashtag}" placeholder="#hashtag" styleClass="form-control" style="background:white" required="true" requiredMessage="Hashtag can't be empty">
 								 <pf:ajax event="keyup" listener="#{hashtagController.checkIsAvailable}" update="isAvailable" />
 							</pf:inputText>
 							<h:panelGroup id="isAvailable">

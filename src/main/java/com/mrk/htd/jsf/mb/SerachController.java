@@ -32,60 +32,79 @@ import com.mrk.htd.sdk.util.RestHelper;
  */
 @javax.faces.bean.ManagedBean
 @ViewScoped
-public class ContactsController extends AbstractMB<HashtagContacts> {
+public class SerachController extends AbstractMB<Hashtag> {
 
-	private List<HashtagContacts> hashtagContacts;
+	private String query = "";
+	private Hashtag serachResults;
+	private boolean isAvailable;
+	private HashtagProfile hashtagProfile;
 
-	public ContactsController() {
-		loadContacts();
+	public SerachController() {
 	}
 
 	@Override
-	protected AbstractRestClient<HashtagContacts> getResetClient() {
-		return new HashtagContactClient();
+	protected AbstractRestClient<Hashtag> getResetClient() {
+		return new HashtagClient();
 	}
 
-	@Override
-	public void delete(int id) throws RestException {
-		super.delete(id);
-		loadContacts();
-	}
-	public String loadContacts() {
+	public void find() {
 		try {
-			hashtagContacts = findWithFilters(new Filters().add("hashtagId", getHashtagDetails().getHashtagId().toString()));
+			serachResults = findSingleWithFilters(new Filters().add("hashtag", query));
+			isAvailable = true;
+			if(serachResults != null){
+				try {
+					hashtagProfile = new HashtagProfileClient().findSingle(new Filters().add("hashtagId", getSerachResults().getHashtagId().toString()));
+				} catch (RestException e) {
+					hashtagProfile = null;
+				}	
+			}
 		} catch (Exception e) {
-			JsfUtil.showError(e.getMessage());
+			isAvailable = false;
 		}
-		return null;
-	}
-	
-	public String getPictureUrl(int contactId){
-		try{
-			HashtagProfile profile = new HashtagProfileClient().findSingle(new Filters().add("hashtagId", contactId+""));
-			return profile.getProfilePicture();
-		}catch(Exception e ){
-			return  getUnavailableUrl();
-		}
-	}
-
-	public List<HashtagContacts> getHashtagContacts() {
-		return hashtagContacts;
-	}
-
-	public void setHashtagContacts(List<HashtagContacts> hashtagContacts) {
-		this.hashtagContacts = hashtagContacts;
 	}
 	
 	public void addFriend(Hashtag hashtag)  {
+		if(hashtag == null){
+			return;
+		}
 		HashtagContacts contacts = new HashtagContacts();
 		contacts.setContactHashtagId(hashtag);
 		contacts.setHashtagId(getHashtagDetails().getHashtagOriginalObject());
 		contacts.setAddedDate(new Date());
 		try {
-			super.create(contacts);
+			new HashtagContactClient().create(contacts);
+			query = "";
+			serachResults = null;
+			
 		} catch (RestException e) {
 			JsfUtil.showError(e.getMessage());
 		}
 		
 	}
+
+	public String getQuery() {
+		return query;
+	}
+
+	public void setQuery(String query) {
+		this.query = query;
+	}
+
+	public Hashtag getSerachResults() {
+		return serachResults;
+	}
+	
+	public HashtagProfile getSerachProfile() {
+		return hashtagProfile;
+	}
+
+	public boolean getIsAvailable() {
+		return isAvailable;
+	}
+
+	public void setIsAvailable(boolean isAvailable) {
+		this.isAvailable = isAvailable;
+	}
+	
+
 }

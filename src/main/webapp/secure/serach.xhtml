@@ -1,0 +1,65 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+
+	<meta charset="UTF-8" />
+	<title>My Hashtag | Serach</title>
+	<ui:include page="../include/header-resources-include.jsp" />
+</h:head>
+<body class="skin-blue">
+	<ui:include page="../include/header.jsp" />
+	<div class="wrapper row-offcanvas row-offcanvas-left">
+		<ui:include page="../include/left.jsp" />
+
+		<!-- Right side column. Contains the navbar and content of the page -->
+		<aside class="right-side">
+			<!-- Content Header (Page header) -->
+			<section class="content-header">
+				<h1>
+					Friends <small>Find Hashtag</small>
+				</h1>
+				<ol class="breadcrumb">
+					<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+					<li class="active">Friends</li>
+				</ol>
+			</section>
+
+			<!-- Main content -->
+			<section class="content">
+				 <!-- search form -->
+                   <h:form id="serachForm">
+                   		<p:ajaxStatus onstart="PF('statusDialog').show();" onsuccess="setTimeout(function(){PF('statusDialog').hide()}, 200);" /> 
+						<p:dialog
+							widgetVar="statusDialog" modal="true" draggable="false"
+							closable="false" resizable="false" showHeader="false">
+							<p:graphicImage value="/img/ajax-loader.gif" width="20px" height="20px" />
+							
+						</p:dialog> 
+                   		<p:growl id="msgs"/>
+                        <p:inputText value="#{serachController.query}" onkeypress="if (event.keyCode == 13) {onchange(); return false; }" p:placeholder="Search..." styleClass="form-control" style="background:white">
+							 <p:ajax event="change" listener="#{serachController.find}" update="pnl msgs" />
+						</p:inputText>
+						<p:outputPanel id="pnl" columns="1" >
+							<p:panel rendered="#{serachController.isAvailable}">
+								<p:graphicImage width="90px" styleClass="img-circle" value="#{serachController.serachProfile.profilePicture != null?serachController.serachProfile.profilePicture:serachController.unavailableUrl}"/>
+	                            <p:outputLabel value="#{serachController.serachResults.ownerFirstName} #{serachController.serachResults.ownerLastName}" />
+	                            <p:commandButton action="#{serachController.addFriend(serachController.serachResults)}" 
+										 value="Add" 
+										 styleClass="small-box-footer btn ion-person-add" update="serachForm"/>
+							</p:panel>
+	                    </p:outputPanel>
+					</h:form>
+			</section>
+			<!-- /.content -->
+		</aside>
+		<!-- /.right-side -->
+	</div>
+	<!-- ./wrapper -->
+	<ui:include page="../include/footer-resources-include.jsp" />
+
+</body>
+</html>
