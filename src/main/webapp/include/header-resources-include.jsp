@@ -40,5 +40,15 @@
         	.ui-widget-header{
         		background: none;
         	}
+        	.noBorder{
+        		border: 1px solid #FFFFFF;
+        	}
+        	
+        	.noBorder tr{
+        		border: 1px solid #FFFFFF;
+        	}
+        	.ui-draggable .ui-dialog-titlebar{
+        		 background-color: #0073b7 !important;
+        	}
         </style>
 </html>

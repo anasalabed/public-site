@@ -31,11 +31,9 @@
 			<!-- Main content -->
 			<section class="content">
 				<div class="box">
-					<p:dataTable id="ContactsTable" var="contact" value="#{contactsController.hashtagContacts}" selectionMode="single" 
-                                 selection="#{contactsController.selected}" paginator="true" paginatorPosition="bottom" rows="10"
-                                 rowKey="#{contact.contactId}">
+					<p:dataTable id="ContactsTable" var="contact" value="#{contactsController.hashtagContacts}"
+                                 paginator="true" paginatorPosition="bottom" rows="10">
                         
-                        <p:ajax event="rowSelect" listener="#{contactsController.select}" />
                         
                          <p:column width="100">
                             <f:facet name="header">
@@ -61,7 +59,6 @@
 						                    height="64" styleClass="img-circle" cache="false">
 						     </p:graphicImage>    
                         </p:column>
-                        
                         <p:column width="100">
                             <f:facet name="header">
                                 <h:outputLabel value="Added Date"/>
@@ -69,6 +66,22 @@
                             <h:outputLabel value="#{contact.addedDate}">
                             	<f:convertDateTime type="date" pattern="MM-dd-yyyy"/>
                             </h:outputLabel>
+                        </p:column>
+                         <p:column width="100">
+                            <p:panelGrid columns="2" styleClass="noBorder">
+                            	 <p:commandButton  value="Delete" oncomplete="PF('delDialog').show()"   styleClass="btn btn-danger">
+                            	 	<f:setPropertyActionListener value="#{contact}" target="#{contactsController.selected}" />
+                            	 </p:commandButton>
+                            	 <h:commandButton action="#{loginController.submit}" value="Privacy"  styleClass="btn btn-info"></h:commandButton>
+                            </p:panelGrid>
+                            <p:dialog header="Delete Confirmation" widgetVar="delDialog" resizable="false" id="delDialog"
+	                            showEffect="fade" hideEffect="explode" modal="true" width="300px">
+			                    <h:panelGrid id="display" columns="2" cellpadding="4" style="margin:0 auto;">
+			
+			                        <h:outputText value="Name: #{contactsController.selected != null?contactsController.selected:'N/A'}" />
+			                    </h:panelGrid>
+
+   				            </p:dialog> 
                         </p:column>
 
                     </p:dataTable>
