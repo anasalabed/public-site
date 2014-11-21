@@ -54,6 +54,10 @@
 	</filter-mapping>
 	<error-page>
 		<exception-type>org.springframework.security.access.AccessDeniedException</exception-type>
-		<location>/faces/login.xhtml</location>
+		<location>/accessDenied.xhtml</location>
+	</error-page>
+	<error-page>
+		<exception-type>java.lang.Exception</exception-type>
+		<location>/secure/500.xhtml</location>
 	</error-page>
 </web-app>

@@ -1,5 +1,6 @@
 package com.mrk.htd.jsf.mb;
 
+import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
 import java.util.Map;
@@ -19,7 +20,7 @@ import com.mrk.htd.sdk.rest.exceptions.RestException;
  * @site http://www.mkiswani.com
  * @email rhkiswani@gmail.com 
  */
-public abstract class AbstractMB<T> {
+public abstract class AbstractMB<T> implements Serializable{
 
 	private T selected;
 	private Class<?> tClass;
@@ -83,14 +84,19 @@ public abstract class AbstractMB<T> {
 	}
 
 	public HashtagDetails getHashtagDetails() {
-		return (HashtagDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		try {
+			return (HashtagDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	public HashtagProfile getHashtagProfile() {
 		HashtagDetails hashtagDetails = getHashtagDetails();
 		try {
 			return new HashtagProfileClient().findSingle(new Filters().add("hashtagId", hashtagDetails.getHashtagId().toString()));
-		} catch (RestException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
 		}
