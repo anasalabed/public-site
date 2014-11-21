@@ -39,8 +39,9 @@
 					
 				</p:dialog> 
 				<div class="box">
-					<p:dataTable id="ContactsTable" var="contact" value="#{contactsController.hashtagContacts}"
-                                 paginator="true" paginatorPosition="bottom" rows="10">
+				<div class="box-body table-responsive no-padding">
+					<h:dataTable id="ContactsTable" var="contact" value="#{contactsController.hashtagContacts}"
+                                 paginator="true" paginatorPosition="bottom" rows="10" styleClass="table table-hover">
                         
                         
                          <p:column width="100">
@@ -82,8 +83,9 @@
                             </p:panelGrid>
                         </p:column>
                          
-                    </p:dataTable>
+                    </h:dataTable>
                   
+				</div>
 				</div>
 				</h:form>
 			</section>
