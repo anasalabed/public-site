@@ -50,7 +50,8 @@
 	</filter>
 	<filter-mapping>
 		<filter-name>springSecurityFilterChain</filter-name>
-		<url-pattern>/*</url-pattern>
+		<url-pattern>/secure/*</url-pattern>
+		<url-pattern>/login.xhtml</url-pattern>
 	</filter-mapping>
 	<error-page>
 		<exception-type>org.springframework.security.access.AccessDeniedException</exception-type>

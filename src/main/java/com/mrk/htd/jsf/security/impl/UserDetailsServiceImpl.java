@@ -9,7 +9,10 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.mrk.htd.sdk.beans.Hashtag;
+import com.mrk.htd.sdk.beans.HashtagProfile;
+import com.mrk.htd.sdk.rest.Filters;
 import com.mrk.htd.sdk.rest.HashtagClient;
+import com.mrk.htd.sdk.rest.HashtagProfileClient;
 import com.mrk.htd.sdk.rest.exceptions.NoResultFoundException;
 import com.mrk.htd.sdk.rest.exceptions.RestException;
 
@@ -29,7 +32,13 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 			Map<String, String> filters = new HashMap<String, String>();
 			filters.put("hashtag", hashtag);
 			Hashtag hashtagObject = new HashtagClient().findSingle(filters);
-			return new HashtagDetails(hashtagObject);
+			HashtagProfile hashtagProfile = null ;
+			try {
+				hashtagProfile = new HashtagProfileClient().findSingle(new Filters().add("hashtagId", hashtagObject.getHashtagId().toString()));
+			} catch (NoResultFoundException e) {
+				System.err.println(hashtagObject.getHashtag() + "has no profile ");
+			}
+			return new HashtagDetails(hashtagObject,hashtagProfile);
 		} catch (NoResultFoundException e) {
 			throw new UsernameNotFoundException("hashtag for name \"" + hashtag + "\" not found.");
 		} catch (RestException e) {

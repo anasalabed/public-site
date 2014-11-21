@@ -63,7 +63,7 @@ public class ContactsController extends AbstractMB<HashtagContacts> {
 			HashtagProfile profile = new HashtagProfileClient().findSingle(new Filters().add("hashtagId", contactId+""));
 			return profile.getProfilePicture();
 		}catch(Exception e ){
-			return "http://www2.athleticscholarships.net/appss/customer/images/image-unavailable.png";
+			return  getUnavailableUrl();
 		}
 	}
 

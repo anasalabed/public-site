@@ -9,7 +9,7 @@
                     <!-- Sidebar user panel -->
                     <div class="user-panel">
                         <div class="pull-left image">
-                            <img src="#{loginController.hashtagProfile.profilePicture}" class="img-circle" alt="User Image" />
+                            <img src="#{loginController.hashtagProfile.profilePicture != null?loginController.hashtagProfile.profilePicture:loginController.unavailableUrl}" class="img-circle" alt="User Image" />
                         </div>
                         <div class="pull-left info">
                             <p>Hello, #{loginController.hashtagDetails.ownerFirstName}</p>

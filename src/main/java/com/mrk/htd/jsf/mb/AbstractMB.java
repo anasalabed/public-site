@@ -8,6 +8,7 @@ import java.util.Map;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 import com.mrk.htd.jsf.security.impl.HashtagDetails;
+import com.mrk.htd.sdk.beans.Hashtag;
 import com.mrk.htd.sdk.beans.HashtagProfile;
 import com.mrk.htd.sdk.rest.AbstractRestClient;
 import com.mrk.htd.sdk.rest.Filters;
@@ -94,12 +95,10 @@ public abstract class AbstractMB<T> implements Serializable{
 
 	public HashtagProfile getHashtagProfile() {
 		HashtagDetails hashtagDetails = getHashtagDetails();
-		try {
-			return new HashtagProfileClient().findSingle(new Filters().add("hashtagId", hashtagDetails.getHashtagId().toString()));
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}
+		return hashtagDetails.getHashtagProfile();
 	}
 	
+	public String getUnavailableUrl() {
+		return "http://www2.athleticscholarships.net/appss/customer/images/image-unavailable.png";
+	}
 }

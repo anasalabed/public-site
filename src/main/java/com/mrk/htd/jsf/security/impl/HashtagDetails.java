@@ -9,6 +9,7 @@ import org.springframework.security.core.authority.GrantedAuthorityImpl;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.mrk.htd.sdk.beans.Hashtag;
+import com.mrk.htd.sdk.beans.HashtagProfile;
 
 /**
  * 
@@ -19,9 +20,11 @@ import com.mrk.htd.sdk.beans.Hashtag;
 public class HashtagDetails implements UserDetails{
 	
 	private Hashtag hashtag;
+	private HashtagProfile profile;
 
-	public HashtagDetails(Hashtag hashtag){
+	public HashtagDetails(Hashtag hashtag,HashtagProfile profile){
 		this.hashtag=hashtag;
+		this.profile = profile;
 	}
 
 	@Override
@@ -95,6 +98,10 @@ public class HashtagDetails implements UserDetails{
 	 */
 	public String getOwnerLastName() {
 		return hashtag.getOwnerLastName();
+	}
+
+	public HashtagProfile getHashtagProfile() {
+		return profile;
 	}
 
 
