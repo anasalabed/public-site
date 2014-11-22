@@ -15,5 +15,6 @@ sudo rm -r /opt/tomcat/webapps/ROOT
 echo "---------------------------------------------------------------------------------------------------------------------"
 echo "Restarting TOMCAT"
 echo "---------------------------------------------------------------------------------------------------------------------"
+sudo killall -9 java
 sudo service tomcat8 restart
 sudo tail -f /opt/tomcat/logs/catalina.out 
