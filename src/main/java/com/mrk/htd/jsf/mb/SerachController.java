@@ -63,23 +63,23 @@ public class SerachController extends AbstractMB<Hashtag> {
 		}
 	}
 	
-	public void addFriend(Hashtag hashtag)  {
-		if(hashtag == null){
-			return;
+	public String addFriend()  {
+		if(serachResults == null){
+			return null;
 		}
 		HashtagContacts contacts = new HashtagContacts();
-		contacts.setContactHashtagId(hashtag);
+		contacts.setContactHashtagId(serachResults);
 		contacts.setHashtagId(getHashtagDetails().getHashtagOriginalObject());
 		contacts.setAddedDate(new Date());
 		try {
 			new HashtagContactClient().create(contacts);
 			query = "";
 			serachResults = null;
-			
+			isAvailable = false;
 		} catch (RestException e) {
 			JsfUtil.showError(e.getMessage());
 		}
-		
+		return null;
 	}
 
 	public String getQuery() {

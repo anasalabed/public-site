@@ -31,6 +31,11 @@
                                 <i class="ion-ios7-search-strong"></i> <span>Find Hashtag</span>
                             </a>
                         </li>
+                         <li>
+                           <a href="../secure/contacts.xhtml">
+                                <i class="ion-android-contacts"></i> <span>Contacts</span>
+                            </a>
+                        </li>
 <!--                         <li class="treeview"> -->
 <!--                             <a href="#"> -->
 <!--                                 <i class="fa fa-bar-chart-o"></i> -->

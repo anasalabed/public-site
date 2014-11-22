@@ -1,5 +1,6 @@
 package com.mrk.htd.jsf.mb;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -34,7 +35,7 @@ import com.mrk.htd.sdk.util.RestHelper;
 @ViewScoped
 public class ContactsController extends AbstractMB<HashtagContacts> {
 
-	private List<HashtagContacts> hashtagContacts;
+	private List<HashtagContacts> hashtagContacts = new ArrayList<HashtagContacts>();
 
 	public ContactsController() {
 		loadContacts();
@@ -76,6 +77,9 @@ public class ContactsController extends AbstractMB<HashtagContacts> {
 		this.hashtagContacts = hashtagContacts;
 	}
 	
+	public int getHashtagContactsCount(){
+		return hashtagContacts.size();
+	}
 	public void addFriend(Hashtag hashtag)  {
 		HashtagContacts contacts = new HashtagContacts();
 		contacts.setContactHashtagId(hashtag);
