@@ -20,11 +20,9 @@ import com.mrk.htd.sdk.beans.HashtagProfile;
 public class HashtagDetails implements UserDetails{
 	
 	private Hashtag hashtag;
-	private HashtagProfile profile;
 
-	public HashtagDetails(Hashtag hashtag,HashtagProfile profile){
+	public HashtagDetails(Hashtag hashtag){
 		this.hashtag=hashtag;
-		this.profile = profile;
 	}
 
 	@Override
@@ -100,10 +98,6 @@ public class HashtagDetails implements UserDetails{
 		return hashtag.getOwnerLastName();
 	}
 
-	public HashtagProfile getHashtagProfile() {
-		return profile;
-	}
-	
 	public Hashtag getHashtagOriginalObject(){
 		return hashtag;
 	}

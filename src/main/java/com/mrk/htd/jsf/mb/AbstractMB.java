@@ -93,10 +93,6 @@ public abstract class AbstractMB<T> implements Serializable{
 		}
 	}
 
-	public HashtagProfile getHashtagProfile() {
-		HashtagDetails hashtagDetails = getHashtagDetails();
-		return hashtagDetails.getHashtagProfile();
-	}
 	
 	public String getUnavailableUrl() {
 		return "http://www2.athleticscholarships.net/appss/customer/images/image-unavailable.png";

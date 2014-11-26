@@ -45,7 +45,7 @@
 						</p:inputText>
 						<p:outputPanel id="pnl" columns="1" >
 							<p:panel rendered="#{serachController.isAvailable}">
-								<p:graphicImage width="90px" cache="false" styleClass="img-circle" value="#{serachController.serachProfile.profilePicture != null?serachController.serachProfile.profilePicture:serachController.unavailableUrl}"/>
+								<p:graphicImage width="90px" cache="false" styleClass="img-circle" value="#{serachController.serachResults.picture != null?serachController.serachResults.picture:serachController.unavailableUrl}"/>
 	                            <p:outputLabel value="#{serachController.serachResults.ownerFirstName} #{serachController.serachResults.ownerLastName}" />
 	                            <p:commandButton ajax="false" action="#{serachController.addFriend}" 
 										 value="Add" 

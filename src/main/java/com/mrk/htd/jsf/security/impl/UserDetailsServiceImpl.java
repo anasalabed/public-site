@@ -33,12 +33,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 			filters.put("hashtag", hashtag);
 			Hashtag hashtagObject = new HashtagClient().findSingle(filters);
 			HashtagProfile hashtagProfile = null ;
-			try {
-				hashtagProfile = new HashtagProfileClient().findSingle(new Filters().add("hashtagId", hashtagObject.getHashtagId().toString()));
-			} catch (NoResultFoundException e) {
-				System.err.println(hashtagObject.getHashtag() + "has no profile ");
-			}
-			return new HashtagDetails(hashtagObject,hashtagProfile);
+			
+			return new HashtagDetails(hashtagObject);
 		} catch (NoResultFoundException e) {
 			throw new UsernameNotFoundException("hashtag for name \"" + hashtag + "\" not found.");
 		} catch (RestException e) {

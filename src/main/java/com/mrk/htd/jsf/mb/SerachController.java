@@ -37,7 +37,6 @@ public class SerachController extends AbstractMB<Hashtag> {
 	private String query = "";
 	private Hashtag serachResults;
 	private boolean isAvailable;
-	private HashtagProfile hashtagProfile;
 
 	public SerachController() {
 	}
@@ -51,13 +50,6 @@ public class SerachController extends AbstractMB<Hashtag> {
 		try {
 			serachResults = findSingleWithFilters(new Filters().add("hashtag", query));
 			isAvailable = true;
-			if(serachResults != null){
-				try {
-					hashtagProfile = new HashtagProfileClient().findSingle(new Filters().add("hashtagId", getSerachResults().getHashtagId().toString()));
-				} catch (RestException e) {
-					hashtagProfile = null;
-				}	
-			}
 		} catch (Exception e) {
 			isAvailable = false;
 		}
@@ -94,10 +86,6 @@ public class SerachController extends AbstractMB<Hashtag> {
 		return serachResults;
 	}
 	
-	public HashtagProfile getSerachProfile() {
-		return hashtagProfile;
-	}
-
 	public boolean getIsAvailable() {
 		return isAvailable;
 	}

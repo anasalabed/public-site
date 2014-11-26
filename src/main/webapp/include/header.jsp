@@ -70,7 +70,7 @@
                             <ul class="dropdown-menu">
                                 <!-- User image -->
                                 <li class="user-header bg-light-blue">
-                                   <img src="#{loginController.hashtagProfile.profilePicture != null?loginController.hashtagProfile.profilePicture:loginController.unavailableUrl}" class="img-circle" alt="User Image" />
+                                   <img src="#{loginController.hashtagDetails.hashtagOriginalObject.picture != null?loginController.hashtagDetails.hashtagOriginalObject.picture:loginController.unavailableUrl}" class="img-circle" alt="User Image" />
                                     <p>
                                         #{loginController.hashtagDetails.ownerFirstName} #{loginController.hashtagDetails.ownerLastName}
                                         <small>Member since 
